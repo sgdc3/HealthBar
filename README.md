@@ -58,7 +58,7 @@
             dev (on reload) and players with permission</li>
             <li>Shows amount of health below the player's tag (With
             configurable name, no health bars there. <a href=
-            "/bukkit-plugins/health-bar/pages/faq/">Why?</a>)
+            "http://dev.bukkit.org/bukkit-plugins/health-bar/pages/faq/">Why?</a>)
             </li>
             <li>Shows on custom named mobs and restores the name after the bar
             has disappeared.<br>
@@ -154,7 +154,7 @@
         <div style=
         "text-align: center; margin-left: auto; margin-right: auto;">
             <p>Please read the <a href=
-            "/bukkit-plugins/health-bar/pages/faq/">FAQ</a> for more infos!</p>
+            "http://dev.bukkit.org/bukkit-plugins/health-bar/pages/faq/">FAQ</a> for more infos!</p>
         </div>
     </div>
 </body>
