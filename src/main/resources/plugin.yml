@@ -1,0 +1,14 @@
+name: HealthBar
+description: Cool health bars above mobs and players!
+website: http://dev.bukkit.org/bukkit-plugins/health-bar/
+author: filoghost
+authors: [filoghost, sgdc3]
+main: com.gmail.filoghost.healthbar.HealthBar
+version: ${project.version}
+softdepend: [EpicBoss Gold Edition]
+
+commands:
+    healthbar:
+        description: Main command for HealthBar, use /hbr help for commands.
+        usage: /<command>
+        aliases: [hbr,hbar]

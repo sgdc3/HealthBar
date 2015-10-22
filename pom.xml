@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.gmail.filoghost</groupId>
+    <artifactId>healthbar</artifactId>
+    <version>1.8.3</version>
+    <packaging>jar</packaging>
+
+    <name>HealthBar</name>
+    <description>Cool health bars above mobs and players!</description>
+    <inceptionYear>2013</inceptionYear>
+    <url>http://dev.bukkit.org/bukkit-plugins/health-bar/</url>
+
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/filoghost/HealthBar</url>
+    </issueManagement>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Change Compiler Version (JDK) HERE! -->
+        <javaVersion>1.7</javaVersion>
+        <!-- Change MC Version HERE! -->
+        <bukkitVersion>1.8.8-R0.1-SNAPSHOT</bukkitVersion>
+    </properties>
+
+    <build>
+        <finalName>${project.name}</finalName>
+        <resources>
+            <resource>
+                <targetPath>.</targetPath>
+                <filtering>true</filtering>
+                <directory>src/main/resources/</directory>
+                <includes>
+                    <include>plugin.yml</include>
+                </includes>
+            </resource>
+            <resource>
+                <targetPath>.</targetPath>
+                <filtering>false</filtering>
+                <directory>src/main/resources/</directory>
+                <excludes>
+                    <exclude>plugin.yml</exclude>
+                </excludes>
+                <includes>
+                    <include>*.yml</include>
+                </includes>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>${javaVersion}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>2.4.1</version>
+                <configuration>
+                    <createDependencyReducedPom>false</createDependencyReducedPom>
+                    <minimizeJar>true</minimizeJar>
+                    <relocations>
+                        <relocation>
+                            <pattern>org.mcstats</pattern>
+                            <shadedPattern>com.gmail.filoghost.healthbar</shadedPattern>
+                        </relocation>
+                    </relocations>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+
+        <!-- SpigotMC Repo (Bukkit and SpigotAPI) -->
+        <repository>
+            <id>spigot-repo</id>
+            <url>http://hub.spigotmc.org/nexus/content/groups/public</url>
+        </repository>
+
+        <!-- Xephi Repo (Metrics)-->
+        <repository>
+            <id>xephi-repo</id>
+            <url>http://ci.xephi.fr/plugin/repository/everything/</url>
+        </repository>
+
+        <!-- Metrics Snapshots Repo (Too instable! 60% UPTIME)
+        <repository>
+            <id>mcstats-snapshots</id>
+            <url>http://repo.mcstats.org/content/repositories/snapshots/</url>
+        </repository> -->
+
+    </repositories>
+
+    <dependencies>
+        <!-- Metrics API -->
+        <dependency>
+            <groupId>org.mcstats.bukkit</groupId>
+            <artifactId>metrics-lite</artifactId>
+            <version>R8-SNAPSHOT</version>
+            <scope>compile</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.bukkit</groupId>
+                    <artifactId>bukkit</artifactId>
+                </exclusion>
+            </exclusions>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- Bukkit API, http://www.spigotmc.org/ or http://bukkit.org/ -->
+        <dependency>
+            <groupId>org.bukkit</groupId>
+            <artifactId>bukkit</artifactId>
+            <version>${bukkitVersion}</version>
+            <scope>provided</scope>
+            <optional>true</optional>
+            <exclusions>
+                <exclusion>
+                    <artifactId>junit</artifactId>
+                    <groupId>junit</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>gson</artifactId>
+                    <groupId>com.google.code.gson</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>persistence-api</artifactId>
+                    <groupId>javax.persistence</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+    </dependencies>
+</project>
