@@ -5,7 +5,6 @@ author: filoghost
 authors: [filoghost, sgdc3]
 main: com.gmail.filoghost.healthbar.HealthBar
 version: ${project.version}
-softdepend: [EpicBoss Gold Edition]
 
 commands:
     healthbar:
